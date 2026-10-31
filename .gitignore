@@ -4,3 +4,4 @@ renders/**/*.mp4
 renders/**/frames/
 project-backup.zip
 episodes/*/build/
+__pycache__/
