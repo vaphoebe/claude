@@ -1,0 +1,64 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Storyboard</title>
+<style>
+  @font-face { font-family: 'Inter'; src: url('/brand/fonts/Inter-Regular.otf'); font-weight: 400; }
+  :root { --bg:#0F1116; --bg2:#141820; --ivory:#F5F3EE; --orange:#FF7A3D; --slate:#9AA7B8; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ivory); font-family: Inter, sans-serif; font-weight:400; width:1680px; padding:56px 48px 64px; }
+  header { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid #2a2f3a; padding-bottom:28px; margin-bottom:36px; }
+  h1 { font-weight:400; font-size:44px; margin:10px 0 0; }
+  .kicker { color:var(--slate); letter-spacing:.24em; font-size:15px; text-transform:uppercase; }
+  .meta { color:var(--slate); font-size:16px; line-height:1.7; text-align:right; }
+  .grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:36px 28px; }
+  .shot { background:var(--bg2); border-radius:18px; overflow:hidden; }
+  .shot svg { display:block; width:100%; height:auto; background:var(--bg); }
+  .info { padding:16px 18px 20px; font-size:15px; line-height:1.5; }
+  .head { display:flex; gap:12px; align-items:baseline; margin-bottom:8px; }
+  .num { color:var(--orange); font-size:20px; }
+  .time { color:var(--slate); font-size:15px; }
+  .vo { color:var(--ivory); font-size:17px; margin-bottom:10px; }
+  .row { color:var(--slate); }
+  .row b { font-weight:400; color:var(--ivory); opacity:.75; }
+  footer { margin-top:36px; color:var(--slate); font-size:15px; }
+</style>
+<body>
+<header>
+  <div><div class="kicker">Storyboard · EP001 · draft for approval</div><h1>What Actually Happens When You Ask AI a Question?</h1></div>
+  <div class="meta">9:16 · 1080×1920 · 30 fps · ~60 s<br>Subtitles: Inter 400, 44 px, #F5F3EE<br>Working name: placeholder (not approved)</div>
+</header>
+<div class="grid" id="grid"></div>
+<footer>Frames are key frames rendered with the approved rig. Probability bars are illustrative, not real model output. Music: original ambient bed, ducked under narration.</footer>
+<script type="module">
+import { createRobot } from '/character/rig/robot.js';
+import { SHOTS } from '/episodes/ep001-ask-ai/storyboard.js';
+import * as K from '/scenes/components.js';
+
+const brand = await (await fetch('/brand/brand.config.json')).json();
+const C = brand.colors;
+await document.fonts.load("400 40px 'Inter'");
+const grid = document.getElementById('grid');
+
+SHOTS.forEach((s, i) => {
+  const card = document.createElement('div'); card.className = 'shot';
+  const svg = K.el('svg', { viewBox: '0 0 1080 1920', width: 1080, height: 1920 });
+  K.el('rect', { width: 1080, height: 1920, fill: C.bg }, svg);
+  // subtle floor glow for depth
+  K.el('ellipse', { cx: 540, cy: 1240, rx: 520, ry: 60, fill: C.bg2 }, svg);
+  const g = K.el('g', {}, svg);
+  s.draw(g, { C, brand, robot: (parent) => createRobot(parent, C) });
+  K.subtitle(svg, C, brand, s.sub);
+  card.appendChild(svg);
+  const info = document.createElement('div'); info.className = 'info';
+  info.innerHTML = `<div class="head"><span class="num">${String(i + 1).padStart(2, '0')}</span><span class="time">${s.time}</span></div>
+    <div class="vo">“${s.vo}”</div>
+    <div class="row"><b>Visual</b> ${s.visual}</div>
+    <div class="row"><b>Robot</b> ${s.robot}</div>
+    <div class="row"><b>Camera</b> ${s.camera} · <b>Transition</b> ${s.transition}</div>
+    <div class="row"><b>Sound</b> ${s.sfx}</div>`;
+  card.appendChild(info);
+  grid.appendChild(card);
+});
+window.__duration = 0;
+window.__seek = () => {};
+</script>
