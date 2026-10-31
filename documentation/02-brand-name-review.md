@@ -43,3 +43,8 @@ Names I checked and **dropped**:
 2. When the network allows it, or by hand on your side, check each name in: USPTO trademark search, a domain registrar, YouTube handle creation (handles can be checked without publishing anything), and Facebook username setup.
 3. For long-term protection, consider a clearance search by a trademark attorney before investing in the logo.
 4. Until then, the production system uses the placeholder `{{BRAND_NAME}}` in a single config file. Renaming later changes one line.
+
+## Decision (2026-10-31)
+- **Channel/page name: Ask Ivo.** **Host robot: Ivo.** Both chosen by the owner.
+- Web search for "Ask Ivo" / "AskIvo" found no app, channel, podcast or trademark with that name. The nearest was "ASK I.V.A.N." (USPTO serial 99833152, Class 42, pending), a different mark.
+- Still unverified: YouTube handle (@askivo), Facebook Page name, domains (askivo.com), and a USPTO/UKIPO/EUIPO search in Classes 9 and 41. This is not legal clearance.

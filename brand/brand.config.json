@@ -2,10 +2,15 @@
   "_comment": "Permanent brand specification. Do not change colors, typography, character or subtitle settings without owner approval.",
   "version": "1.0.0-draft",
   "brand": {
-    "name": "{{BRAND_NAME}}",
-    "workingName": "The Curious Circuit (NOT APPROVED - placeholder only)",
+    "name": "Ask Ivo",
+    "workingName": "Ask Ivo",
     "tagline": "Big questions. Simple explanations.",
-    "nameApproved": false
+    "nameApproved": true,
+    "handleIdeas": [
+      "@askivo",
+      "@ask.ivo"
+    ],
+    "nameStatus": "Chosen by owner 2026-10-31. Web search found no conflicting brand. NOT legally cleared: YouTube handle, Facebook name, domain and trademark availability still to be checked by owner."
   },
   "colors": {
     "bg": "#0F1116",
@@ -131,7 +136,8 @@
     "id": "host-robot",
     "rig": "character/rig/robot.js",
     "reference": "character/reference/storyboard-reference.webp",
-    "approved": true
+    "approved": true,
+    "name": "Ivo"
   },
   "narration": {
     "provider": "elevenlabs",
