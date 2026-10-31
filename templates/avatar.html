@@ -1,0 +1,25 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Profile avatar</title>
+<body>
+<script type="module">
+// Channel profile picture (square master; platforms crop it to a circle).
+// ?expr=curious|happy|neutral — Ivo's head and shoulders, centred inside the circle-safe area.
+import { createStage } from '/templates/stage.js';
+import { EXPRESSIONS } from '/character/rig/expressions.js';
+import * as F from '/scenes/fx.js';
+
+const expr = new URLSearchParams(location.search).get('expr') ?? 'curious';
+const S = 1024;
+const st = await createStage({ width: S, height: S });
+const { C, svg } = st;
+const g = st.layer();
+F.glow(g, svg, C.blue, { x: 200, y: 900, r: 520, opacity: 0.22 });
+F.glow(g, svg, C.orange, { x: 560, y: 420, r: 620, opacity: 0.55 });
+const E = structuredClone(EXPRESSIONS[expr]);
+const r = st.robot(g, { x: 512, y: 1800, scale: 2.2, yaw: 10, headYaw: 6, ...E });
+if (expr === 'curious') { r.state.eyeL.dx = r.state.eyeR.dx = 6; r.state.eyeL.dy = r.state.eyeR.dy = -4; }
+r.apply();
+F.vignette(svg, svg);
+st.finish({ duration: 0 });
+</script>
