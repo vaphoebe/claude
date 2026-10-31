@@ -1,0 +1,39 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>YouTube banner</title>
+<body>
+<script type="module">
+// YouTube channel banner, 2560x1440. Everything important sits inside the
+// 1546x423 centre area that every device shows (TV shows the full image).
+import { createStage } from '/templates/stage.js';
+import { EXPRESSIONS } from '/character/rig/expressions.js';
+import * as K from '/scenes/components.js';
+import * as F from '/scenes/fx.js';
+
+const W = 2560, H = 1440;
+const st = await createStage({ width: W, height: H });
+const { C, svg } = st;
+const bg = st.layer();
+const R = F.rng(21);
+F.glow(bg, svg, C.orange, { x: 1000, y: 720, r: 900, opacity: 0.35 });
+F.glow(bg, svg, C.blue, { x: 2050, y: 760, r: 800, opacity: 0.18 });
+const bokehW = F.glowGrad(svg, C.orange, { stops: [[0, 0.9], [0.5, 0.35], [1, 0]] });
+const bokehC = F.glowGrad(svg, C.slate, { stops: [[0, 0.7], [0.5, 0.25], [1, 0]] });
+for (let i = 0; i < 60; i++) K.el('circle', { cx: R() * W, cy: R() * H, r: 14 + R() * 60, fill: R() > 0.5 ? bokehW : bokehC, opacity: 0.1 + R() * 0.3 }, bg);
+// faint network motif on the right
+const net = F.network(bg, svg, C, { x: 2300, y: 720, w: 420, h: 420, layers: [4, 6, 6, 4] });
+net.state.act = 0.55; net.update(); net.g.setAttribute('opacity', 0.55);
+
+const g = st.layer();
+const E = structuredClone(EXPRESSIONS.curious);
+const r = st.robot(g, { x: 780, y: 1415, scale: 1.15, yaw: 22, headYaw: 8, ...E });
+r.state.armR = { sh: 52, el: 58, wr: 18 }; r.state.handR = 'open';
+r.apply();
+F.glow(g, svg, C.orange, { x: 930, y: 940, r: 300, sy: 0.25, opacity: 0.0 });
+K.text(g, 1060, 700, 'Ask Ivo', { size: 150, anchor: 'start', fill: C.ivory }, C);
+K.el('rect', { x: 1066, y: 738, width: 110, height: 6, rx: 3, fill: C.orange }, g);
+K.text(g, 1062, 820, 'Big questions. Simple explanations.', { size: 54, anchor: 'start', fill: C.ivory }, C);
+K.text(g, 1064, 890, 'AI  ·  Tech  ·  Business  ·  Money  ·  Science', { size: 36, anchor: 'start', fill: C.slate }, C);
+F.vignette(svg, svg, { w: W, h: H });
+st.finish({ duration: 0 });
+</script>

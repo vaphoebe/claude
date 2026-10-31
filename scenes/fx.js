@@ -52,12 +52,12 @@ export function atmosphere(parent, svg, C, { seed = 1, warm = [[780, 520, 620]],
   };
 }
 
-export function vignette(parent, svg) {
+export function vignette(parent, svg, { w = 1080, h = 1920 } = {}) {
   const id = nid('v');
   const gr = el('radialGradient', { id, cx: '50%', cy: '46%', r: '75%' }, defs(svg));
   el('stop', { offset: '55%', 'stop-color': '#000', 'stop-opacity': 0 }, gr);
   el('stop', { offset: '100%', 'stop-color': '#000', 'stop-opacity': 0.72 }, gr);
-  return el('rect', { width: 1080, height: 1920, fill: `url(#${id})`, 'pointer-events': 'none' }, parent);
+  return el('rect', { width: w, height: h, fill: `url(#${id})`, 'pointer-events': 'none' }, parent);
 }
 
 // Frosted glass panel with a soft edge highlight. Returns the group (origin = top-left).
