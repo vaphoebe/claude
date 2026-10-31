@@ -26,6 +26,8 @@ export function buildCues(lines, brand, { maxChars = 40 } = {}) {
       split(words.slice(0, best).join(' ')); split(words.slice(best).join(' '));
     };
     merged.forEach(split);
+    // fold very short fragments (e.g. "remember:") into the next chunk when it still fits two lines
+    for (let i = 0; i < chunks.length - 1; i++) if (chunks[i].length < 12 && `${chunks[i]} ${chunks[i + 1]}`.length <= S.maxCharsPerLine * 2) { chunks[i + 1] = `${chunks[i]} ${chunks[i + 1]}`; chunks.splice(i, 1); i--; }
     const total = chunks.reduce((n, c) => n + c.length, 0);
     let t = ln.start;
     for (const c of chunks) {
@@ -36,6 +38,7 @@ export function buildCues(lines, brand, { maxChars = 40 } = {}) {
   }
   for (let i = 0; i < cues.length - 1; i++) if (cues[i + 1].start - cues[i].end < 0.9) cues[i].end = cues[i + 1].start;
   for (const c of cues) c.end = Math.max(c.end, c.start + S.minDurationSec);
+  for (let i = 0; i < cues.length - 1; i++) cues[i].end = Math.min(cues[i].end, cues[i + 1].start); // never overlap
   return cues;
 }
 

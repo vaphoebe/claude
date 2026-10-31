@@ -11,9 +11,9 @@ echo "▸ cues + captions"; node tools/export-cues.mjs "$COMP" "$B"
 DUR=$(cat "$B/duration.txt")
 echo "▸ soundtrack"; "$PY" -I tools/py/mix.py "$EP/audio/narration.wav" "$B/cues.json" "$B/mix_raw.wav" "$DUR"
 echo "▸ loudness (-14 LUFS, -1.5 dBTP, two-pass)"
-M=$(ffmpeg -hide_banner -i "$B/mix_raw.wav" -af loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p')
+M=$(ffmpeg -hide_banner -i "$B/mix_raw.wav" -af loudnorm=I=-14:TP=-2:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p')
 j() { echo "$M" | python3 -c "import json,sys;print(json.load(sys.stdin)['$1'])"; }
-ffmpeg -hide_banner -loglevel error -y -i "$B/mix_raw.wav" -af "loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=$(j input_i):measured_TP=$(j input_tp):measured_LRA=$(j input_lra):measured_thresh=$(j input_thresh):offset=$(j target_offset):linear=true" -ar 48000 "$B/mix.wav"
+ffmpeg -hide_banner -loglevel error -y -i "$B/mix_raw.wav" -af "loudnorm=I=-14:TP=-2:LRA=11:measured_I=$(j input_i):measured_TP=$(j input_tp):measured_LRA=$(j input_lra):measured_thresh=$(j input_thresh):offset=$(j target_offset):linear=true" -ar 48000 "$B/mix.wav"
 cp "$B/captions.srt" "$OUT/captions.srt"
 echo "▸ render captioned"; node tools/render-video.mjs "$COMP?captions=1" "$OUT/master_captioned.mp4" --audio "$B/mix.wav"
 echo "▸ render clean master"; node tools/render-video.mjs "$COMP?captions=0" "$OUT/master_clean.mp4" --audio "$B/mix.wav"

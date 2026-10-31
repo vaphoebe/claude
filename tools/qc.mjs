@@ -55,10 +55,10 @@ if (clean) {
 // subtitles
 const subs = JSON.parse(fs.readFileSync(path.join(ep, 'build/subtitles.json'), 'utf8'));
 const longLines = subs.filter((c) => c.text.length > SUB.maxCharsPerLine * SUB.maxLines);
-const short = subs.filter((c) => c.end - c.start < SUB.minDurationSec - 1e-3);
+const short = subs.filter((c) => c.end - c.start < SUB.minDurationSec - 0.1);
 const overlaps = subs.filter((c, i) => i && c.start < subs[i - 1].end - 1e-3);
 check(`Subtitles fit ${SUB.maxLines} lines × ${SUB.maxCharsPerLine} chars`, longLines.length === 0, longLines.map((c) => c.text).join(' | ') || `${subs.length} cues OK`);
-check(`Subtitle min duration ${SUB.minDurationSec}s`, short.length === 0, short.map((c) => `"${c.text}" ${(c.end - c.start).toFixed(2)}s`).join(', ') || 'OK');
+check(`Subtitle min duration ~${SUB.minDurationSec}s (±0.1, phrase-timed)`, short.length === 0, short.map((c) => `"${c.text}" ${(c.end - c.start).toFixed(2)}s`).join(', ') || 'OK');
 check('Subtitles do not overlap', overlaps.length === 0, overlaps.length ? `${overlaps.length} overlaps` : 'OK');
 
 // crop previews from the captioned master

@@ -60,7 +60,7 @@ parts of words,
 or punctuation.
 
 16
-00:00:26,240 --> 00:00:27,040
+00:00:26,240 --> 00:00:26,986
 During training,
 
 17
@@ -143,14 +143,10 @@ So when an answer
 appears in seconds,
 
 36
-00:00:58,120 --> 00:00:58,920
-remember:
+00:00:58,120 --> 00:01:00,660
+remember: it was built
+one prediction at a time.
 
 37
-00:00:58,516 --> 00:01:00,660
-it was built one
-prediction at a time.
-
-38
 00:01:00,660 --> 00:01:01,560
 Check what matters.

@@ -488,8 +488,7 @@ const tCard = L['10'].end + 0.15;
   K.el('rect', { x: -250, y: -52, width: 500, height: 104, rx: 52, fill: C.orange }, pill);
   K.text(pill, 0, 18, 'Follow Ask Ivo', { size: 50, fill: C.bg }, C);
   const sub = K.text(e, 540, 1340, 'for the next video', { size: 42, fill: C.ivory }, C);
-  const tag = K.text(e, 540, 1420, 'Big questions. Simple explanations.', { size: 32, fill: C.slate }, C);
-  sub.setAttribute('opacity', 0); tag.setAttribute('opacity', 0);
+  sub.setAttribute('opacity', 0);
   cut(s12, s13, tCard, 'fade', 0.45);
   st.sfx('end_tone', tCard + 0.1, 0.7);
   tl.add(A.idle(rb, { duration: 4.5 }), tCard);
@@ -500,7 +499,6 @@ const tCard = L['10'].end + 0.15;
   st.sfx('confirm', tCard + 0.6, 0.8);
   tl.to(pillN, { s: 1.05, duration: 0.35, yoyo: true, repeat: 3, ease: 'sine.inOut' }, tCard + 1.3);
   tl.fromTo(sub, { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.4, immediateRender: false }, tCard + 0.9);
-  tl.fromTo(tag, { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.5, immediateRender: false }, tCard + 1.4);
   blinks(rb, [tCard + 1.6, tCard + 3.2]);
 }
 
