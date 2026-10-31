@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>EP001 thumbnail</title>
+<body>
+<script type="module">
+// Thumbnail / Reels cover candidate (1080x1920). Same rig, palette and type as the episode.
+// The key subject sits in the centre so 1:1 and 4:5 crops still read.
+import { createStage } from '/templates/stage.js';
+import { EXPRESSIONS } from '/character/rig/expressions.js';
+import * as K from '/scenes/components.js';
+import * as F from '/scenes/fx.js';
+
+const st = await createStage();
+const { C, svg } = st;
+const bg = st.layer();
+const atmo = F.atmosphere(bg, svg, C, { seed: 5, warm: [[760, 640, 680]], cool: [[180, 1400, 600]] });
+atmo.update(1.2);
+const g = st.layer();
+F.glow(g, svg, C.orange, { x: 480, y: 760, r: 820, opacity: 0.4 });
+const r = st.robot(g, { x: 450, y: 1700, scale: 1.85, yaw: 18, headYaw: 14, headTilt: -12, ...structuredClone(EXPRESSIONS.curious) });
+r.state.headTilt = -12;
+r.state.eyeL.dx = r.state.eyeR.dx = 16; r.state.eyeL.dy = r.state.eyeR.dy = -10;
+r.apply();
+const q = K.el('g', { transform: 'translate(840,560) scale(1.5)' }, g);
+F.glow(q, svg, C.orange, { x: 0, y: 0, r: 240, opacity: 0.6 });
+F.neon(q, 'M-62 -78 C-62 -160 78 -168 78 -88 C78 -36 0 -30 0 32', C.orange, { w: 16, halo: 46 });
+K.el('circle', { cx: 0, cy: 96, r: 13, fill: C.orange }, q);
+F.vignette(svg, svg);
+const fade = K.el('linearGradient', { id: 'fadeB', x1: 0, y1: 0, x2: 0, y2: 1 }, F.defs(svg));
+K.el('stop', { offset: 0, 'stop-color': C.bg, 'stop-opacity': 0 }, fade);
+K.el('stop', { offset: 0.45, 'stop-color': C.bg, 'stop-opacity': 0.88 }, fade);
+K.el('stop', { offset: 1, 'stop-color': C.bg, 'stop-opacity': 1 }, fade);
+K.el('rect', { x: 0, y: 1020, width: 1080, height: 900, fill: 'url(#fadeB)' }, svg);
+const t = K.el('g', { style: 'filter: drop-shadow(0 0 18px rgba(0,0,0,0.9))' }, svg);
+K.text(t, 540, 1300, 'What happens when', { size: 76, fill: C.ivory }, C);
+const l2 = K.text(t, 540, 1395, '', { size: 76, fill: C.ivory }, C);
+const a = K.el('tspan', {}, l2); a.textContent = 'you ';
+const b = K.el('tspan', { fill: C.orange }, l2); b.textContent = 'ask AI?';
+st.finish({ duration: 0 });
+</script>

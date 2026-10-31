@@ -42,8 +42,7 @@ export function idle(rig, { duration = 4, amount = 1 } = {}) {
     onUpdate() {
       const w = (p.t / 3.2) * Math.PI * 2;
       S.breathe = Math.sin(w) * amount;
-      S.bob = Math.sin(w) * 1.6 * amount;
-      S.headNod = Math.sin(w + 0.6) * 1.8 * amount;
+      S.headNod = Math.sin(w + 0.6) * 2.2 * amount;
     },
   });
 }

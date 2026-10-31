@@ -1,0 +1,156 @@
+1
+00:00:00,000 --> 00:00:02,510
+You ask an AI a question.
+
+2
+00:00:02,510 --> 00:00:04,580
+Seconds later, an answer.
+
+3
+00:00:04,580 --> 00:00:05,564
+But it isn't pulling
+
+4
+00:00:05,564 --> 00:00:07,660
+a finished reply from a file.
+
+5
+00:00:07,660 --> 00:00:08,786
+It's predicting one,
+
+6
+00:00:08,786 --> 00:00:10,230
+piece by piece.
+
+7
+00:00:10,230 --> 00:00:12,100
+Here's what actually happens.
+
+8
+00:00:12,100 --> 00:00:13,561
+With popular AI chat apps,
+
+9
+00:00:13,561 --> 00:00:14,684
+your message travels
+
+10
+00:00:14,684 --> 00:00:16,780
+to computers in a data center,
+
+11
+00:00:16,780 --> 00:00:18,950
+running a large language model.
+
+12
+00:00:18,950 --> 00:00:21,600
+First, your text is
+split into tokens:
+
+13
+00:00:21,600 --> 00:00:22,523
+small chunks like words,
+
+14
+00:00:22,523 --> 00:00:23,680
+parts of words,
+
+15
+00:00:23,680 --> 00:00:26,240
+or punctuation.
+
+16
+00:00:26,240 --> 00:00:27,040
+During training,
+
+17
+00:00:26,986 --> 00:00:28,198
+the model learned patterns
+
+18
+00:00:28,198 --> 00:00:29,910
+from huge amounts of text.
+
+19
+00:00:29,910 --> 00:00:30,896
+It doesn't look through
+
+20
+00:00:30,896 --> 00:00:32,600
+that text when it answers.
+
+21
+00:00:32,600 --> 00:00:33,855
+The patterns are captured
+
+22
+00:00:33,855 --> 00:00:35,540
+in billions of numbers.
+
+23
+00:00:35,540 --> 00:00:36,894
+Now it uses those patterns,
+
+24
+00:00:36,894 --> 00:00:39,010
+and everything in
+the conversation,
+
+25
+00:00:39,010 --> 00:00:40,246
+to calculate which token
+
+26
+00:00:40,246 --> 00:00:42,040
+is likely to come next.
+
+27
+00:00:42,040 --> 00:00:43,040
+It picks one,
+
+28
+00:00:43,040 --> 00:00:44,640
+adds it, and repeats,
+
+29
+00:00:44,640 --> 00:00:45,940
+token by token,
+
+30
+00:00:45,940 --> 00:00:47,870
+until the answer is complete.
+
+31
+00:00:47,870 --> 00:00:50,190
+That's why AI sounds so fluent.
+
+32
+00:00:50,190 --> 00:00:52,600
+But fluent isn't
+the same as correct.
+
+33
+00:00:52,600 --> 00:00:53,727
+It can sound confident
+
+34
+00:00:53,727 --> 00:00:55,260
+and still be wrong.
+
+35
+00:00:55,260 --> 00:00:58,120
+So when an answer
+appears in seconds,
+
+36
+00:00:58,120 --> 00:00:58,920
+remember:
+
+37
+00:00:58,516 --> 00:01:00,660
+it was built one
+prediction at a time.
+
+38
+00:01:00,660 --> 00:01:01,560
+Check what matters.

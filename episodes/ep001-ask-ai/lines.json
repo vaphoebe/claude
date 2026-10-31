@@ -1,0 +1,12 @@
+[
+  { "id": "01", "text": "You ask an AI a question. Seconds later, an answer.", "pauseAfter": 0.35, "leadIn": 0.25 },
+  { "id": "02", "text": "But it isn't pulling a finished reply from a file. It's predicting one, piece by piece.", "pauseAfter": 0.4 },
+  { "id": "03", "text": "Here's what actually happens.", "pauseAfter": 0.45 },
+  { "id": "04", "text": "With popular AI chat apps, your message travels to computers in a data center, running a large language model.", "pauseAfter": 0.4 },
+  { "id": "05", "text": "First, your text is split into tokens: small chunks like words, parts of words, or punctuation.", "pauseAfter": 0.4 },
+  { "id": "06", "text": "During training, the model learned patterns from huge amounts of text. It doesn't look through that text when it answers. The patterns are captured in billions of numbers.", "pauseAfter": 0.4 },
+  { "id": "07", "text": "Now it uses those patterns, and everything in the conversation, to calculate which token is likely to come next.", "pauseAfter": 0.35 },
+  { "id": "08", "text": "It picks one, adds it, and repeats, token by token, until the answer is complete.", "pauseAfter": 0.5 },
+  { "id": "09", "text": "That's why AI sounds so fluent. But fluent isn't the same as correct. It can sound confident and still be wrong.", "pauseAfter": 0.5 },
+  { "id": "10", "text": "So when an answer appears in seconds, remember: it was built one prediction at a time. Check what matters.", "pauseAfter": 1.6 }
+]

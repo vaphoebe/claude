@@ -1,7 +1,0 @@
-[
-  { "id": "l1", "text": "You ask an AI a question.", "pauseAfter": 0.3, "leadIn": 0.2 },
-  { "id": "l2", "text": "Seconds later, an answer.", "pauseAfter": 0.4 },
-  { "id": "l3", "text": "But it isn't pulling a finished reply from a file.", "pauseAfter": 0.3 },
-  { "id": "l4", "text": "It's predicting one, piece by piece.", "pauseAfter": 0.4 },
-  { "id": "l5", "text": "Here's what actually happens.", "pauseAfter": 0.6 }
-]

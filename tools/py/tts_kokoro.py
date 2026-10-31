@@ -5,7 +5,7 @@ usage: python -I tts_kokoro.py <lines.json> <out.wav> <timing.json>
 env:   KOKORO_MODEL, KOKORO_VOICES (paths), KOKORO_VOICE (default af_heart), KOKORO_SPEED (default 1.0)
 lines.json: [{"id": "l1", "text": "...", "pauseAfter": 0.3}, ...]
 """
-import json, os, sys
+import json, os, re, sys
 import numpy as np, soundfile as sf
 from kokoro_onnx import Kokoro
 
@@ -19,9 +19,18 @@ def main(lines_path, out_wav, timing_path):
     chunks, timing, t = [], [], float(lines[0].get('leadIn', 0.15)) if lines else 0
     chunks.append(np.zeros(int(t * SR_OUT), dtype=np.float32))
     for ln in lines:
-        audio, sr = k.create(ln['text'], voice=voice, speed=speed, lang='en-us')
-        audio = trim(audio.astype(np.float32), sr)
-        audio = resample(audio, sr, SR_OUT)
+        # synthesise sentence by sentence: long inputs can come back empty
+        parts = []
+        for sent in re.split(r'(?<=[.!?])\s+', ln['text'].strip()):
+            a, sr = k.create(sent, voice=voice, speed=speed, lang='en-us')
+            if not len(a):  # the model occasionally returns nothing for a contraction; expand it and retry
+                alt = re.sub(r"(\w)n't\b", r'\1 not', sent).replace('can not', 'cannot')
+                print(f'  retrying with: {alt}', file=sys.stderr)
+                a, sr = k.create(alt, voice=voice, speed=speed, lang='en-us')
+            a = resample(trim(a.astype(np.float32), sr), sr, SR_OUT)
+            if not len(a): raise RuntimeError(f'empty audio for: {sent}')
+            parts += [a, np.zeros(int(0.14 * SR_OUT), dtype=np.float32)]
+        audio = np.concatenate(parts[:-1])
         dur = len(audio) / SR_OUT
         timing.append({'id': ln['id'], 'text': ln['text'], 'start': round(t, 3), 'end': round(t + dur, 3)})
         chunks.append(audio)

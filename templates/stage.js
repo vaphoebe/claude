@@ -27,9 +27,9 @@ export async function createStage({ width, height, background = 'bg' } = {}) {
   bg.setAttribute('width', W); bg.setAttribute('height', H); bg.setAttribute('fill', C[background] ?? background);
   svg.appendChild(bg);
 
-  const rigs = [];
+  const rigs = [], hooks = [], cues = [];
   const tl = gsap.timeline({ paused: true });
-  const refresh = () => rigs.forEach((r) => r.apply());
+  const refresh = () => { const t = tl.time(); hooks.forEach((h) => h(t)); rigs.forEach((r) => r.apply()); };
 
   const stage = {
     brand, C, W, H, svg, tl, rigs, gsap,
@@ -46,9 +46,24 @@ export async function createStage({ width, height, background = 'bg' } = {}) {
       rigs.push(r);
       return r;
     },
+    // Per-frame callback (procedural motion: drift, rotation, particles). Receives timeline time.
+    onFrame(fn) { hooks.push(fn); return fn; },
+    // Animatable transform/opacity for any SVG element: tween the returned object's x, y, s, r, o.
+    node(target, init = {}) {
+      const n = { x: 0, y: 0, s: 1, r: 0, o: 1, ox: 0, oy: 0, ...init };
+      hooks.push(() => {
+        target.setAttribute('transform', `translate(${n.x},${n.y}) translate(${n.ox},${n.oy}) rotate(${n.r}) scale(${n.s}) translate(${-n.ox},${-n.oy})`);
+        target.setAttribute('opacity', n.o);
+        target.setAttribute('display', n.o <= 0.001 ? 'none' : 'inline');
+      });
+      return n;
+    },
+    // Sound-effect cue for the audio mixer (exported via window.__cues).
+    sfx(name, time, gain = 1) { cues.push({ name, time: Math.max(0, +time.toFixed(3)), gain }); },
     // Call once the timeline is built.
     finish({ duration } = {}) {
       window.__duration = duration ?? tl.duration();
+      window.__cues = cues.sort((a, b) => a.time - b.time);
       window.__seek = (t) => { tl.seek(t, false); refresh(); };
       window.__seek(0);
       // live preview when opened in a normal browser: ?play
