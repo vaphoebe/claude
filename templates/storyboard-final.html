@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Storyboard (final)</title>
+<style>
+  @font-face { font-family: 'Inter'; src: url('/brand/fonts/Inter-Regular.otf'); font-weight: 400; }
+  :root { --bg:#0F1116; --bg2:#141820; --ivory:#F5F3EE; --orange:#FF7A3D; --slate:#9AA7B8; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ivory); font-family: Inter, sans-serif; font-weight:400; width:1800px; padding:56px 48px 60px; }
+  header { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid #2a2f3a; padding-bottom:26px; margin-bottom:34px; }
+  h1 { font-weight:400; font-size:46px; margin:10px 0 0; }
+  .kicker { color:var(--slate); letter-spacing:.24em; font-size:15px; text-transform:uppercase; }
+  .meta { color:var(--slate); font-size:16px; line-height:1.7; text-align:right; }
+  .grid { display:grid; grid-template-columns:repeat(6, 1fr); gap:30px 22px; }
+  .shot { background:var(--bg2); border-radius:16px; overflow:hidden; }
+  .shot img { display:block; width:100%; aspect-ratio:9/16; object-fit:cover; }
+  .info { padding:14px 15px 18px; font-size:14px; line-height:1.48; }
+  .head { display:flex; gap:10px; align-items:baseline; margin-bottom:6px; }
+  .num { color:var(--orange); font-size:19px; }
+  .time { color:var(--slate); font-size:14px; }
+  .vo { font-size:15px; margin-bottom:8px; }
+  .row { color:var(--slate); margin-top:4px; }
+  .row b { font-weight:400; color:var(--ivory); opacity:.7; }
+  footer { margin-top:34px; color:var(--slate); font-size:15px; }
+</style>
+<body>
+<header>
+  <div><div class="kicker">Storyboard · EP001 · frames from the final animation</div><h1>What Actually Happens When You Ask AI a Question?</h1></div>
+  <div class="meta">9:16 · 1080×1920 · 30 fps · 1:03<br>Narration: ElevenLabs “Brian” · Music & SFX: original<br>Captions: Inter 400, 44 px, ivory + orange emphasis</div>
+</header>
+<div class="grid" id="grid"></div>
+<footer>Every frame is captured from the rendered animation. Probability bars and token splits are illustrative.</footer>
+<script type="module">
+const shots = await (await fetch('/episodes/ep001-ask-ai/storyboard-final.json')).json();
+await document.fonts.load("400 40px 'Inter'");
+const grid = document.getElementById('grid');
+const loads = shots.map((s, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  const d = document.createElement('div'); d.className = 'shot';
+  d.innerHTML = `<img src="/episodes/ep001-ask-ai/build/sb/${n}.jpg"><div class="info"><div class="head"><span class="num">${n}</span><span class="time">${s.time}</span></div>
+    <div class="vo">“${s.vo}”</div><div class="row"><b>Shot</b> ${s.shot}</div><div class="row"><b>Sound</b> ${s.sfx}</div></div>`;
+  grid.appendChild(d);
+  const img = d.querySelector('img');
+  return img.complete ? Promise.resolve() : new Promise((r) => { img.onload = r; img.onerror = r; });
+});
+await Promise.all(loads);
+window.__duration = 0; window.__seek = () => {};
+</script>
