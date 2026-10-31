@@ -476,23 +476,31 @@ const tCard = L['10'].end + 0.15;
   tl.fromTo(s12.cam, { s: 1.08 }, { s: 1, duration: tCard - t11, ease: 'power1.out', immediateRender: false }, t11);
   blinks(r, [t11 + 1.2, t11 + 3.6]);
 
-  // End card: robot bust + tagline (no logo animation; name not yet approved)
+  // End card: Ivo waves, then the follow call-to-action (no logo animation)
   const e = s13.g;
-  F.glow(e, svg, C.orange, { x: 540, y: 760, r: 520, opacity: 0.3 });
-  const rb = st.robot(e, { x: 540, y: 1250, scale: 0.9 });
-  const tag = K.text(e, 540, 1060, 'Big questions. Simple explanations.', { size: 50, fill: C.ivory }, C);
-  const line = K.el('rect', { x: 500, y: 1110, width: 80, height: 4, rx: 2, fill: C.orange }, e);
-  // keep only the head + shoulders visible
-  const clipId = 'endclip';
-  const cp = K.el('clipPath', { id: clipId }, e); K.el('rect', { x: 0, y: 0, width: 1080, height: 960 }, cp);
-  rb.root.setAttribute('clip-path', `url(#${clipId})`);
-  const rbG = K.el('g', { 'clip-path': `url(#${clipId})` }, e); rbG.appendChild(rb.root); rb.root.removeAttribute('clip-path');
-    tl.add(A.express(rb, 'happy', { duration: 0.01 }), tCard);
-  cut(s12, s13, tCard, 'fade', 0.5);
-  st.sfx('end_tone', tCard + 0.1, 0.8);
-  tl.fromTo(tag, { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.5, immediateRender: false }, tCard + 0.3);
-  tl.fromTo(line, { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.5, immediateRender: false }, tCard + 0.5);
-  blinks(rb, [tCard + 0.9]);
+  F.glow(e, svg, C.orange, { x: 540, y: 760, r: 560, opacity: 0.32 });
+  const rb = st.robot(e, { x: 540, y: 1090, scale: 0.86 });
+  hero(e, 540, 1090, 0.86); e.appendChild(rb.root);
+  const pill = K.el('g', {}, e);
+  const pillN = st.node(pill, { x: 540, y: 1225, o: 0, s: 0.6 });
+  F.glow(pill, svg, C.orange, { x: 0, y: 0, r: 260, sy: 0.4, opacity: 0.55 });
+  K.el('rect', { x: -250, y: -52, width: 500, height: 104, rx: 52, fill: C.orange }, pill);
+  K.text(pill, 0, 18, 'Follow Ask Ivo', { size: 50, fill: C.bg }, C);
+  const sub = K.text(e, 540, 1340, 'for the next video', { size: 42, fill: C.ivory }, C);
+  const tag = K.text(e, 540, 1420, 'Big questions. Simple explanations.', { size: 32, fill: C.slate }, C);
+  sub.setAttribute('opacity', 0); tag.setAttribute('opacity', 0);
+  cut(s12, s13, tCard, 'fade', 0.45);
+  st.sfx('end_tone', tCard + 0.1, 0.7);
+  tl.add(A.idle(rb, { duration: 4.5 }), tCard);
+  tl.add(A.express(rb, 'happy', { duration: 0.01 }), tCard);
+  tl.add(A.wave(rb, { cycles: 2, duration: 1.2 }), tCard + 0.25);
+  tl.add(A.pose(rb, 'presentRight', { duration: 0.35 }), tCard + 1.8);
+  tl.to(pillN, { o: 1, s: 1, duration: 0.45, ease: 'back.out(2)' }, tCard + 0.6);
+  st.sfx('confirm', tCard + 0.6, 0.8);
+  tl.to(pillN, { s: 1.05, duration: 0.35, yoyo: true, repeat: 3, ease: 'sine.inOut' }, tCard + 1.3);
+  tl.fromTo(sub, { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.4, immediateRender: false }, tCard + 0.9);
+  tl.fromTo(tag, { attr: { opacity: 0 } }, { attr: { opacity: 1 }, duration: 0.5, immediateRender: false }, tCard + 1.4);
+  blinks(rb, [tCard + 1.6, tCard + 3.2]);
 }
 
 F.vignette(st.svg, svg);
@@ -500,4 +508,4 @@ mountSubtitles(st, buildCues(timing.lines, st.brand), {
   visible: showCaptions,
   emphasis: ['tokens', 'predicting', 'data center', 'language model', 'patterns', 'billions of numbers', 'likely to come next', 'token by token', 'fluent', 'correct', 'wrong', 'one prediction at a time', 'Check what matters'],
 });
-st.finish({ duration: Math.max(END, tCard + 1.8) });
+st.finish({ duration: tCard + 3.8 });
