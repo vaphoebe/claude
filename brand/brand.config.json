@@ -100,7 +100,7 @@
     "maxLines": 2,
     "maxCharsPerLine": 32,
     "align": "center",
-    "centerY": 1330,
+    "centerY": 1445,
     "maxWidthPx": 820,
     "shadow": "0 0 14px rgba(0,0,0,0.85)) drop-shadow(0 2px 4px rgba(0,0,0,0.9)",
     "minDurationSec": 0.8,
@@ -112,7 +112,8 @@
       "bounce",
       "large background boxes",
       "thick outlines"
-    ]
+    ],
+    "_change": "centerY 1330 \u2192 1445 at owner request (2026-10-31); stays above the bottom platform-UI zone (y \u2265 1500)."
   },
   "motion": {
     "shotLengthSec": [

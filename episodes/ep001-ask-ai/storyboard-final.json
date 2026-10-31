@@ -1,19 +1,121 @@
 [
- {"t":1.2,"time":"0:00–0:02","vo":"You ask an AI a question.","shot":"Hook close-up. A glowing orange question mark draws itself; the robot tilts its head, curious.","sfx":"Shimmer, music fades in"},
- {"t":3.3,"time":"0:02–0:04","vo":"Seconds later, an answer.","shot":"Robot taps Send on a glass chat window (ripple), the answer pours in, the robot hops in surprise.","sfx":"Tap, shimmer"},
- {"t":6.8,"time":"0:04–0:07","vo":"But it isn't pulling a finished reply from a file.","shot":"A drawer slides open, a document rises, and a slate \"no\" ring draws over it. Robot shakes its head.","sfx":"Drawer slide, soft thud"},
- {"t":9.3,"time":"0:07–0:10","vo":"It's predicting one, piece by piece.","shot":"Large glass word tiles pop in one by one; an orange dashed slot pulses for the next piece.","sfx":"Tick per tile"},
- {"t":11.2,"time":"0:10–0:12","vo":"Here's what actually happens.","shot":"Medium close-up, open-hand gesture, slow camera push-in.","sfx":"Whoosh into whip-pan"},
- {"t":13.6,"time":"0:12–0:15","vo":"With popular AI chat apps, your message travels…","shot":"Rotating dotted globe; a glowing data packet arcs across it.","sfx":"Data pulses, beat enters"},
- {"t":15.8,"time":"0:15–0:17","vo":"…to computers in a data center,","shot":"Zoom into a server corridor; light streaks race along the floor.","sfx":"Low server hum"},
- {"t":17.8,"time":"0:17–0:19","vo":"running a large language model.","shot":"Processor powers up; pulses flow along its circuit traces.","sfx":"Power-up rise"},
- {"t":22.5,"time":"0:19–0:26","vo":"First, your text is split into tokens…","shot":"\"How do rainbows form?\" is scanned, then breaks into tiles; \"rain|bows\" glows orange; word, part-word and punctuation tiles pulse in turn.","sfx":"Scan, ticks, blips"},
- {"t":28.0,"time":"0:26–0:30","vo":"During training, the model learned patterns from huge amounts of text.","shot":"Streams of light flow from a stack of pages into a glowing neural network.","sfx":"Paper rustle, shimmer"},
- {"t":31.2,"time":"0:30–0:32","vo":"It doesn't look through that text when it answers.","shot":"Streams cut; the pages dim behind a slate \"no\" ring. Robot thinks, hand to chin.","sfx":"Soft thud"},
- {"t":34.0,"time":"0:32–0:35","vo":"The patterns are captured in billions of numbers.","shot":"Camera dives into the network; it dissolves into a shimmering field of numbers.","sfx":"Zoom whoosh, sparkle"},
- {"t":40.5,"time":"0:35–0:42","vo":"…to calculate which token is likely to come next.","shot":"Unfinished sentence with an empty slot; probability bars grow (illustrative); \"sunlight\" wins.","sfx":"Rising tones, blip"},
- {"t":46.2,"time":"0:42–0:47","vo":"It picks one, adds it, and repeats, token by token…","shot":"Tiles drop in faster and faster until the sentence is complete; an orange loop arrow spins.","sfx":"Pop, accelerating ticks"},
- {"t":52.6,"time":"0:47–0:55","vo":"That's why AI sounds so fluent. But fluent isn't the same as correct.","shot":"A polished answer types itself; a magnifier sweeps in and one line turns orange. Robot: surprised → confused → thinking.","sfx":"Restrained impact, music dips"},
- {"t":61.0,"time":"0:55–1:01","vo":"…it was built one prediction at a time. Check what matters.","shot":"Robot explains confidently; an orange check mark pops onto the answer card; the robot nods.","sfx":"Confirm chime, music resolves"},
- {"t":62.9,"time":"1:01–1:03","vo":"—","shot":"End card: the robot's head and the tagline \"Big questions. Simple explanations.\"","sfx":"Final soft tone"}
+ {
+  "t": 1.2,
+  "time": "0:00\u20130:02",
+  "vo": "You ask an AI a question.",
+  "shot": "Hook close-up. A glowing orange question mark draws itself; the robot tilts its head, curious.",
+  "sfx": "Shimmer, music fades in"
+ },
+ {
+  "t": 3.3,
+  "time": "0:02\u20130:04",
+  "vo": "Seconds later, an answer.",
+  "shot": "Robot taps Send on a glass chat window (ripple), the answer pours in, the robot hops in surprise.",
+  "sfx": "Tap, shimmer"
+ },
+ {
+  "t": 6.8,
+  "time": "0:04\u20130:07",
+  "vo": "But it isn't pulling a finished reply from a file.",
+  "shot": "A drawer slides open, a document rises, and a slate \"no\" ring draws over it. Robot shakes its head.",
+  "sfx": "Drawer slide, soft thud"
+ },
+ {
+  "t": 9.3,
+  "time": "0:07\u20130:10",
+  "vo": "It's predicting one, piece by piece.",
+  "shot": "Large glass word tiles pop in one by one; an orange dashed slot pulses for the next piece.",
+  "sfx": "Tick per tile"
+ },
+ {
+  "t": 11.2,
+  "time": "0:10\u20130:12",
+  "vo": "Here's what actually happens.",
+  "shot": "Medium close-up, open-hand gesture, slow camera push-in.",
+  "sfx": "Whoosh into whip-pan"
+ },
+ {
+  "t": 13.6,
+  "time": "0:12\u20130:15",
+  "vo": "With popular AI chat apps, your message travels\u2026",
+  "shot": "Rotating dotted globe; a glowing data packet arcs across it.",
+  "sfx": "Data pulses, beat enters"
+ },
+ {
+  "t": 15.8,
+  "time": "0:15\u20130:17",
+  "vo": "\u2026to computers in a data center,",
+  "shot": "Zoom into a server corridor; light streaks race along the floor.",
+  "sfx": "Low server hum"
+ },
+ {
+  "t": 17.8,
+  "time": "0:17\u20130:19",
+  "vo": "running a large language model.",
+  "shot": "Processor powers up; pulses flow along its circuit traces.",
+  "sfx": "Power-up rise"
+ },
+ {
+  "t": 22.5,
+  "time": "0:19\u20130:26",
+  "vo": "First, your text is split into tokens\u2026",
+  "shot": "\"How do rainbows form?\" is scanned, then breaks into tiles; \"rain|bows\" glows orange; word, part-word and punctuation tiles pulse in turn.",
+  "sfx": "Scan, ticks, blips"
+ },
+ {
+  "t": 28.0,
+  "time": "0:26\u20130:30",
+  "vo": "During training, the model learned patterns from huge amounts of text.",
+  "shot": "Streams of light flow from a stack of pages into a glowing neural network.",
+  "sfx": "Paper rustle, shimmer"
+ },
+ {
+  "t": 31.2,
+  "time": "0:30\u20130:32",
+  "vo": "It doesn't look through that text when it answers.",
+  "shot": "Streams cut; the pages dim behind a slate \"no\" ring. Robot thinks, hand to chin.",
+  "sfx": "Soft thud"
+ },
+ {
+  "t": 34.0,
+  "time": "0:32\u20130:35",
+  "vo": "The patterns are captured in billions of numbers.",
+  "shot": "Camera dives into the network; it dissolves into a shimmering field of numbers.",
+  "sfx": "Zoom whoosh, sparkle"
+ },
+ {
+  "t": 40.5,
+  "time": "0:35\u20130:42",
+  "vo": "\u2026to calculate which token is likely to come next.",
+  "shot": "Unfinished sentence with an empty slot; probability bars grow (illustrative); \"sunlight\" wins.",
+  "sfx": "Rising tones, blip"
+ },
+ {
+  "t": 46.2,
+  "time": "0:42\u20130:47",
+  "vo": "It picks one, adds it, and repeats, token by token\u2026",
+  "shot": "Tiles drop in faster and faster until the sentence is complete; an orange loop arrow spins.",
+  "sfx": "Pop, accelerating ticks"
+ },
+ {
+  "t": 52.6,
+  "time": "0:47\u20130:55",
+  "vo": "That's why AI sounds so fluent. But fluent isn't the same as correct.",
+  "shot": "A polished answer types itself; a magnifier sweeps in and one line turns orange. Robot: surprised \u2192 confused \u2192 thinking.",
+  "sfx": "Restrained impact, music dips"
+ },
+ {
+  "t": 61.0,
+  "time": "0:55\u20131:01",
+  "vo": "\u2026it was built one prediction at a time. Check what matters.",
+  "shot": "Robot explains confidently; an orange check mark pops onto the answer card; the robot nods.",
+  "sfx": "Confirm chime, music resolves"
+ },
+ {
+  "t": 63.6,
+  "time": "1:02\u20131:05",
+  "vo": "\u2014",
+  "shot": "End card: Ivo waves, an orange \"Follow Ask Ivo\" button pops in, then \"for the next video\" and the tagline.",
+  "sfx": "Soft tone, confirm chime"
+ }
 ]

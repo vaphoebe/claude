@@ -21,7 +21,8 @@ const END = timing.duration + 0.4;
 const bgLayer = st.layer();
 const atmo = F.atmosphere(bgLayer, svg, C, { seed: 5, warm: [[820, 560, 640]], cool: [[180, 1350, 620]] });
 st.onFrame((t) => atmo.update(t));
-const sceneHost = st.layer();
+// Shift every scene down so the main subject sits in the vertical middle of the 9:16 frame.
+const sceneHost = st.layer({ transform: 'translate(0,120)' });
 
 function scene() {
   const root = K.el('g', {}, sceneHost);
