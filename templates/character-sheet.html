@@ -1,0 +1,59 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Character sheet</title>
+<body>
+<script type="module">
+import { createStage } from '/templates/stage.js';
+import { EXPRESSIONS } from '/character/rig/expressions.js';
+import { POSES } from '/character/rig/poses.js';
+
+const W = 1920, H = 1760;
+const st = await createStage({ width: W, height: H });
+const NS = 'http://www.w3.org/2000/svg';
+const label = (x, y, text, size = 26) => {
+  const t = document.createElementNS(NS, 'text');
+  Object.entries({ x, y, 'text-anchor': 'middle', fill: st.C.slate, 'font-size': size }).forEach(([k, v]) => t.setAttribute(k, v));
+  t.textContent = text; st.svg.appendChild(t);
+};
+const clipCell = (x, y, w, h) => {
+  const id = `c${x}_${y}`;
+  const cp = document.createElementNS(NS, 'clipPath'); cp.id = id;
+  const r = document.createElementNS(NS, 'rect');
+  Object.entries({ x, y, width: w, height: h, rx: 24 }).forEach(([k, v]) => r.setAttribute(k, v));
+  cp.appendChild(r); st.svg.appendChild(cp);
+  const bg = r.cloneNode(); bg.setAttribute('fill', st.C.bg2); st.svg.appendChild(bg);
+  return st.layer({ 'clip-path': `url(#${id})` });
+};
+
+// Row 1 — turnaround
+const views = [['Front', 0], ['Three-quarter', 40], ['Side', 90], ['Back', 180]];
+views.forEach(([name, yaw], i) => {
+  const cx = 60 + i * 460, g = clipCell(cx, 40, 420, 620);
+  st.robot(g, { x: cx + 210, y: 600, scale: 0.68, yaw });
+  label(cx + 210, 700, name);
+});
+
+// Row 2 — expressions (head close-ups)
+Object.entries(EXPRESSIONS).forEach(([name, e], i) => {
+  const cw = 254, cx = 60 + i * (cw + 14), g = clipCell(cx, 760, cw, 300);
+  const s = 0.8;
+  const r = st.robot(g, { x: cx + cw / 2, y: 760 + 150 + 604 * s, scale: s, headTilt: e.headTilt, eyeL: { ...e.eyeL }, eyeR: { ...e.eyeR } });
+  label(cx + cw / 2, 1100, name[0].toUpperCase() + name.slice(1), 24);
+});
+
+// Row 3 — body poses
+const poseList = [['Point', 'pointRight'], ['Present', 'presentRight'], ['Explain', 'explain'], ['Think', 'think', 'thinking'], ['React', 'surprised', 'surprised'], ['Shrug', 'confused', 'confused'], ['Happy', 'happy', 'happy'], ['Examine', 'examine', 'curious']];
+poseList.forEach(([name, p, ex], i) => {
+  const cw = 222, cx = 60 + i * (cw + 6), g = clipCell(cx, 1150, cw, 520);
+  const P = POSES[p], E = EXPRESSIONS[ex ?? 'explaining'];
+  st.robot(g, {
+    x: cx + cw / 2, y: 1630, scale: 0.55,
+    armL: { ...P.armL ?? { sh: 6, el: -4, wr: 0 } }, armR: { ...P.armR ?? { sh: 6, el: -4, wr: 0 } },
+    handL: P.handL ?? 'relaxed', handR: P.handR ?? 'relaxed', bodyTilt: P.bodyTilt ?? 0,
+    headTilt: E.headTilt, eyeL: { ...E.eyeL }, eyeR: { ...E.eyeR },
+  });
+  label(cx + cw / 2, 1710, name, 24);
+});
+
+st.finish({ duration: 0 });
+</script>

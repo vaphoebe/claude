@@ -1,0 +1,12 @@
+{
+  "name": "brand-video-system",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sheet": "node tools/render-still.mjs templates/character-sheet.html renders/character/character-sheet.png 1920 1920",
+    "rigtest": "node tools/render-video.mjs templates/rig-test.html renders/character/rig-test.mp4"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
+}

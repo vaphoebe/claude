@@ -1,0 +1,38 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Rig test</title>
+<body>
+<script type="module">
+import { createStage } from '/templates/stage.js';
+import * as A from '/animations/actions.js';
+
+const st = await createStage();
+const r = st.robot(st.svg, { x: 540, y: 1420, scale: 1.05 });
+const tl = st.tl;
+
+tl.add(A.idle(r, { duration: 12 }), 0);
+tl.add(A.blink(r), 0.6);
+tl.add(A.express(r, 'curious'), 0.9);
+tl.add(A.pose(r, 'pointRight', { duration: 0.35 }), 1.2);
+tl.add(A.express(r, 'explaining'), 2.0);
+tl.add(A.pose(r, 'idle', { duration: 0.3 }), 2.3);
+tl.add(A.express(r, 'thinking'), 2.6);
+tl.add(A.pose(r, 'think', { duration: 0.4 }), 2.6);
+tl.add(A.blink(r), 3.4);
+tl.add(A.react(r), 3.9);
+tl.add(A.pose(r, 'idle', { duration: 0.3 }), 4.7);
+tl.add(A.express(r, 'neutral'), 4.7);
+tl.add(A.walk(r, { dir: 1, distance: 220, duration: 1.6 }), 5.0);
+tl.add(A.turn(r, 180, { duration: 0.5 }), 7.0);
+tl.add(A.turn(r, 360, { duration: 0.5 }), 7.7);
+tl.set(r.state, { yaw: 0 }, 8.25);
+tl.to(r.state, { x: 540, duration: 0.5, ease: 'power2.inOut' }, 8.25);
+tl.add(A.express(r, 'happy'), 8.8);
+tl.add(A.wave(r, { cycles: 2, duration: 1.1 }), 8.8);
+tl.add(A.pose(r, 'idle', { duration: 0.3 }), 10.2);
+tl.add(A.express(r, 'confused'), 10.5);
+tl.add(A.pose(r, 'confused', { duration: 0.3 }), 10.5);
+tl.add(A.blink(r), 11.3);
+
+st.finish({ duration: 12 });
+</script>

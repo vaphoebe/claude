@@ -1,0 +1,4 @@
+node_modules/
+.env
+renders/**/*.mp4
+renders/**/frames/
