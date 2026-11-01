@@ -27,6 +27,8 @@ export function buildCues(lines, brand, { maxChars = 40 } = {}) {
     };
     merged.forEach(split);
     // fold very short fragments (e.g. "remember:") into the next chunk when it still fits two lines
+    // a short tail ("check the source,") reads better joined to the chunk before it when it still fits two lines
+    for (let i = 1; i < chunks.length; i++) if (chunks[i].length < 20 && `${chunks[i - 1]} ${chunks[i]}`.length <= S.maxCharsPerLine * 2) { chunks[i - 1] = `${chunks[i - 1]} ${chunks[i]}`; chunks.splice(i, 1); i--; }
     for (let i = 0; i < chunks.length - 1; i++) if (chunks[i].length < 12 && `${chunks[i]} ${chunks[i + 1]}`.length <= S.maxCharsPerLine * 2) { chunks[i + 1] = `${chunks[i]} ${chunks[i + 1]}`; chunks.splice(i, 1); i--; }
     const total = chunks.reduce((n, c) => n + c.length, 0);
     let t = ln.start;
