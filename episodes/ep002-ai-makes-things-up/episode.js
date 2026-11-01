@@ -153,16 +153,17 @@ const t6b = phraseAt('06', 'The model still');
   K.el('circle', { r: 34, fill: 'none', stroke: C.slate, 'stroke-width': 5 }, dim);
   K.text(dim, 0, 16, '?', { size: 44, fill: C.slate }, C);
   cut(s5, s6, t5, 'push', 0.32);
-  tl.fromTo(s6.cam, { s: 1.35, ox: 300, oy: 1150 }, { s: 1.35, duration: 0.01, immediateRender: false }, t5);
+  // focus left road, then truck across to the faint trail (x offsets put each road at frame centre)
+  tl.fromTo(s6.cam, { s: 1.35, ox: 540, oy: 1150, x: 324 }, { s: 1.35, duration: 0.01, immediateRender: false }, t5);
   sheets.forEach((n, i) => { tl.to(n, { o: 1, duration: 0.25 }, t5 + 0.3 + i * 0.16); st.sfx('paper', t5 + 0.3 + i * 0.16, 0.25); });
   tl.to(bN, { o: 1, s: 1, duration: 0.5, ease: 'back.out(2)' }, phraseAt('05', 'so those'));
   st.sfx('confirm', phraseAt('05', 'so those'), 0.7);
   const tRare = L['06'].start;
-  tl.to(s6.cam, { ox: 820, duration: 0.8, ease: 'power2.inOut' }, tRare - 0.1);
+  tl.to(s6.cam, { x: -337, duration: 0.9, ease: 'power2.inOut' }, tRare - 0.1);
   st.sfx('swish', tRare - 0.1, 0.5);
   tl.to(loneN, { o: 1, duration: 0.3 }, tRare + 0.5);
   tl.to(dimN, { o: 0.8, duration: 0.15, yoyo: true, repeat: 7, ease: 'none' }, tRare + 1.2);
-  tl.to(s6.cam, { s: 1, ox: 540, oy: 900, duration: 0.6, ease: 'power2.inOut' }, t6b - 1.2);
+  tl.to(s6.cam, { s: 1, x: 0, duration: 0.6, ease: 'power2.inOut' }, t6b - 1.0);
 }
 
 // =====================================================================
