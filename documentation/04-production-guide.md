@@ -28,6 +28,13 @@ renders/<slug>/           master_clean.mp4, master_captioned.mp4, captions.srt, 
 8. **Human QC + final approval** using `renders/<slug>/qc-report.md`. **(approval)**
 9. **Publishing** is manual, done by the owner. See below.
 
+## Visual rule: one brand look, new scenes every episode
+- **Always the same:** Ask Ivo look. That means the palette, Inter 400, glass panels, neon glow, warm orange and cool blue light, bokeh atmosphere, Ivo, the subtitle style, and the "Follow Ask Ivo" end card.
+- **Never the same:** the set pieces and compositions. Each episode needs its own visual metaphors and environments, so episodes don't look templated. This also protects against "repetitive content" policies.
+  - EP001: chat window, filing cabinet, globe, server corridor, chip, neural network, probability bars, magnifier.
+  - EP002: archive shelves, model orb, bright road vs faint trail in fog, mirage reflection, exam card with stamps, radar sweep.
+- Keep a list of set pieces already used (above), and pick new ones for each episode. `scenes/fx.js` and `scenes/fx2.js` are building blocks, not fixed scenes.
+
 ## Quick commands
 - Preview the animation live in a browser: serve the repo root and open `/episodes/<slug>/composition.html?play`.
 - Spot-check frames: `node tools/contact-sheet.mjs episodes/<slug>/composition.html out.png 1,5,10,20 4`.
