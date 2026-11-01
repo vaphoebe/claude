@@ -1,0 +1,12 @@
+[
+ {"id":"01","phrases":["Ask an AI for a source,","and it might give you one that doesn't exist.","Title, author, even page numbers."]},
+ {"id":"02","phrases":["It isn't lying.","It's doing what it was built to do."]},
+ {"id":"03","phrases":["Here's why AI sometimes makes things up."]},
+ {"id":"04","phrases":["A language model writes by predicting the next token,","using patterns learned from huge amounts of text."]},
+ {"id":"05","phrases":["Facts that appeared again and again leave strong patterns,","so those answers are usually right."]},
+ {"id":"06","phrases":["But rare facts, like a small study or an obscure date, leave weak patterns.","The model still has to write something,","so it writes what a right answer would sound like."]},
+ {"id":"07","phrases":["Researchers call this a hallucination."]},
+ {"id":"08","phrases":["And many tests used to train and rank AI","reward a confident guess over \"I'm not sure.\""]},
+ {"id":"09","phrases":["Tools that search the web or your documents first can help.","But no AI is right every time."]},
+ {"id":"10","phrases":["So use AI for ideas and drafts.","For facts that matter, check the source,","and make sure it's real."]}
+]

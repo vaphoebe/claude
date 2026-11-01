@@ -24,19 +24,25 @@
 </style>
 <body>
 <header>
-  <div><div class="kicker">Storyboard · EP001 · frames from the final animation</div><h1>What Actually Happens When You Ask AI a Question?</h1></div>
-  <div class="meta">9:16 · 1080×1920 · 30 fps · 1:05<br>Narration: ElevenLabs “Brian” · Music & SFX: original<br>Captions: Inter 400, 44 px, ivory + orange emphasis</div>
+  <div><div class="kicker" id="kicker"></div><h1 id="title"></h1></div>
+  <div class="meta" id="meta"></div>
 </header>
 <div class="grid" id="grid"></div>
-<footer>Every frame is captured from the rendered animation. Probability bars and token splits are illustrative.</footer>
+<footer>Every frame is captured from the rendered animation. Some visuals are simplified for clarity.</footer>
 <script type="module">
-const shots = await (await fetch('/episodes/ep001-ask-ai/storyboard-final.json')).json();
+const ep = new URLSearchParams(location.search).get('ep') ?? 'ep001-ask-ai';
+const data = await (await fetch(`/episodes/${ep}/storyboard-final.json`)).json();
+const shots = Array.isArray(data) ? data : data.shots;
+const info = Array.isArray(data) ? { code: 'EP001', title: 'What Actually Happens When You Ask AI a Question?', meta: '9:16 · 1080×1920 · 30 fps · 1:05<br>Narration: ElevenLabs “Brian” · Music & SFX: original<br>Captions: Inter 400, 44 px, ivory + orange emphasis' } : data;
+document.getElementById('kicker').textContent = `Storyboard · ${info.code} · frames from the animation`;
+document.getElementById('title').textContent = info.title;
+document.getElementById('meta').innerHTML = info.meta;
 await document.fonts.load("400 40px 'Inter'");
 const grid = document.getElementById('grid');
 const loads = shots.map((s, i) => {
   const n = String(i + 1).padStart(2, '0');
   const d = document.createElement('div'); d.className = 'shot';
-  d.innerHTML = `<img src="/episodes/ep001-ask-ai/build/sb/${n}.jpg"><div class="info"><div class="head"><span class="num">${n}</span><span class="time">${s.time}</span></div>
+  d.innerHTML = `<img src="/episodes/${ep}/build/sb/${n}.jpg"><div class="info"><div class="head"><span class="num">${n}</span><span class="time">${s.time}</span></div>
     <div class="vo">“${s.vo}”</div><div class="row"><b>Shot</b> ${s.shot}</div><div class="row"><b>Sound</b> ${s.sfx}</div></div>`;
   grid.appendChild(d);
   const img = d.querySelector('img');

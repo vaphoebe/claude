@@ -1,0 +1,119 @@
+{
+ "code": "EP002",
+ "title": "Why Does AI Make Things Up?",
+ "meta": "9:16 \u00b7 1080\u00d71920 \u00b7 30 fps \u00b7 ~1:02 (estimated timing)<br>Look: archive & horizon (different from EP001)<br>Narration: ElevenLabs \u201cBrian\u201d (pending) \u00b7 Music & SFX: original",
+ "shots": [
+  {
+   "t": 1.5,
+   "time": "0:00\u20130:02",
+   "vo": "Ask an AI for a source,",
+   "shot": "In a glowing archive of bookshelves, Ivo happily hands over a paper citation (book icon, title, author, page).",
+   "sfx": "Shimmer, music in"
+  },
+  {
+   "t": 5.4,
+   "time": "0:02\u20130:06",
+   "vo": "\u2026and it might give you one that doesn't exist. Title, author, even page numbers.",
+   "shot": "Close-up on the paper citation: title, author and page get highlighted one by one, then the paper flickers.",
+   "sfx": "Ticks"
+  },
+  {
+   "t": 6.75,
+   "time": "0:06\u20130:07",
+   "vo": "(doesn't exist)",
+   "shot": "A slate \"no\" ring draws over the citation as it fades away. It doesn't exist.",
+   "sfx": "Soft thud"
+  },
+  {
+   "t": 9.6,
+   "time": "0:07\u20130:11",
+   "vo": "It isn't lying. It's doing what it was built to do.",
+   "shot": "Ivo shrugs and shakes his head, then explains with open hands; paper word strips drift behind him.",
+   "sfx": "Swish"
+  },
+  {
+   "t": 13.0,
+   "time": "0:11\u20130:14",
+   "vo": "Here's why AI sometimes makes things up.",
+   "shot": "Close-up in the archive, hand to chin, slow push-in; whip-pan out.",
+   "sfx": "Whoosh"
+  },
+  {
+   "t": 18.6,
+   "time": "0:14\u20130:20",
+   "vo": "A language model writes by predicting the next token\u2026",
+   "shot": "A glowing orb (the model) with orbiting rings; paper word strips drop in one by one: \"The study was published in ___\".",
+   "sfx": "Ticks, shimmer"
+  },
+  {
+   "t": 23.5,
+   "time": "0:20\u20130:26",
+   "vo": "Facts that appeared again and again leave strong patterns\u2026",
+   "shot": "On the horizon floor, a wide bright road lined with many papers leads to a glowing beacon with a check mark.",
+   "sfx": "Rise, confirm chime"
+  },
+  {
+   "t": 29.0,
+   "time": "0:26\u20130:31",
+   "vo": "But rare facts\u2026 leave weak patterns.",
+   "shot": "The camera pans to a single paper on a faint dashed trail that fades into fog, ending at a dim \"?\".",
+   "sfx": "Swish"
+  },
+  {
+   "t": 35.6,
+   "time": "0:31\u20130:37",
+   "vo": "\u2026so it writes what a right answer would sound like.",
+   "shot": "The empty strip fills with a confident orange \"2019\"; Ivo looks pleased.",
+   "sfx": "Pop, shimmer"
+  },
+  {
+   "t": 38.0,
+   "time": "0:37\u20130:39",
+   "vo": "Researchers call this a hallucination.",
+   "shot": "The sentence becomes a mirage: its reflection ripples like heat haze. Ivo is startled, then confused.",
+   "sfx": "Sparkle"
+  },
+  {
+   "t": 43.8,
+   "time": "0:39\u20130:45",
+   "vo": "Many tests\u2026 reward a confident guess over \"I'm not sure.\"",
+   "shot": "A paper exam: \"Guess\" is ticked and gets an orange +1 stamp; \"I'm not sure\" gets a grey 0. Ivo is confused.",
+   "sfx": "Confirm"
+  },
+  {
+   "t": 48.6,
+   "time": "0:45\u20130:49",
+   "vo": "Tools that search the web or your documents first can help.",
+   "shot": "A radar sweep finds real sources: orange blips light up one by one.",
+   "sfx": "Pulse, whoosh, ticks"
+  },
+  {
+   "t": 51.2,
+   "time": "0:49\u20130:52",
+   "vo": "But no AI is right every time.",
+   "shot": "One blip stays grey with a \"?\"; Ivo appears, thinking.",
+   "sfx": "\u2014"
+  },
+  {
+   "t": 54.2,
+   "time": "0:52\u20130:55",
+   "vo": "So use AI for ideas and drafts.",
+   "shot": "Ivo presents a paper card with a lightbulb (ideas and drafts).",
+   "sfx": "Shimmer"
+  },
+  {
+   "t": 58.5,
+   "time": "0:55\u20130:59",
+   "vo": "For facts that matter, check the source, and make sure it's real.",
+   "shot": "A source paper slides in and gets an orange \u2713 stamp; Ivo nods happily.",
+   "sfx": "Swish, confirm"
+  },
+  {
+   "t": 61.2,
+   "time": "0:59\u20131:02",
+   "vo": "\u2014",
+   "shot": "End card: Ivo waves, then \"Follow Ask Ivo\" and \"for the next video\".",
+   "sfx": "Soft tone, chime"
+  }
+ ]
+}
