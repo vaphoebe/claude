@@ -1,0 +1,52 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>EP002 thumbnail</title>
+<body>
+<script type="module">
+// EP002 cover: Ivo, confused, next to a glowing citation that doesn't exist.
+import { createStage } from '/templates/stage.js';
+import { EXPRESSIONS } from '/character/rig/expressions.js';
+import * as K from '/scenes/components.js';
+import * as F from '/scenes/fx.js';
+
+const st = await createStage();
+const { C, svg } = st;
+const bg = st.layer();
+const atmo = F.atmosphere(bg, svg, C, { seed: 12, warm: [[760, 560, 680]], cool: [[160, 1380, 600]] });
+atmo.update(1.4);
+const g = st.layer();
+F.glow(g, svg, C.orange, { x: 420, y: 760, r: 760, opacity: 0.35 });
+
+// citation card (glass), tilted, with a slate "no" ring
+const card = K.el('g', { transform: 'translate(770,560) rotate(8) scale(0.9)' }, g);
+const c = K.el('g', { transform: 'translate(-190,-240)' }, card);
+F.glass(c, svg, C, { x: 0, y: 0, w: 380, h: 480, r: 34 });
+const book = K.el('g', { transform: 'translate(190,112)' }, c);
+F.glow(book, svg, C.orange, { x: 0, y: 0, r: 120, opacity: 0.5 });
+K.el('rect', { x: -48, y: -60, width: 96, height: 120, rx: 8, fill: 'none', stroke: C.orange, 'stroke-width': 7 }, book);
+K.el('line', { x1: -32, y1: -60, x2: -32, y2: 60, stroke: C.orange, 'stroke-width': 7 }, book);
+K.lines(c, 52, 232, [290, 210], { gap: 26, h: 13 }, C);
+K.lines(c, 52, 306, [180], { h: 10, color: C.slate }, C);
+K.text(c, 52, 392, 'p. 142', { size: 34, anchor: 'start', fill: C.slate }, C);
+const no = K.el('g', { transform: 'translate(770,560) scale(0.86)' }, g);
+F.neon(no, 'M0 -300 A300 300 0 1 1 -0.1 -300', C.slate, { w: 12, halo: 40 });
+F.neon(no, 'M-212 212 L212 -212', C.slate, { w: 12, halo: 40 });
+
+// Ivo, confused, looking at the card
+const E = structuredClone(EXPRESSIONS.confused);
+const r = st.robot(g, { x: 290, y: 1800, scale: 1.65, yaw: 22, headYaw: 14, ...E });
+r.state.eyeL.dx = r.state.eyeR.dx = 14; r.state.eyeL.dy = r.state.eyeR.dy = -8;
+r.apply();
+
+F.vignette(svg, svg);
+const fade = K.el('linearGradient', { id: 'fadeB', x1: 0, y1: 0, x2: 0, y2: 1 }, F.defs(svg));
+K.el('stop', { offset: 0, 'stop-color': C.bg, 'stop-opacity': 0 }, fade);
+K.el('stop', { offset: 0.45, 'stop-color': C.bg, 'stop-opacity': 0.88 }, fade);
+K.el('stop', { offset: 1, 'stop-color': C.bg, 'stop-opacity': 1 }, fade);
+K.el('rect', { x: 0, y: 1020, width: 1080, height: 900, fill: 'url(#fadeB)' }, svg);
+const t = K.el('g', { style: 'filter: drop-shadow(0 0 18px rgba(0,0,0,0.9))' }, svg);
+K.text(t, 540, 1300, 'Why does AI', { size: 76, fill: C.ivory }, C);
+const l2 = K.text(t, 540, 1395, '', { size: 76, fill: C.ivory }, C);
+const b = K.el('tspan', { fill: C.orange }, l2); b.textContent = 'make things up?';
+st.finish({ duration: 0 });
+</script>
