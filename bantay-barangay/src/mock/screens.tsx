@@ -24,7 +24,7 @@ export function Welcome() {
       </div>
       <div className="relative mx-4 mt-4 rounded-3xl bg-white p-4 text-slate-900 shadow-2xl">
         <div className="mb-2 text-[12px] font-bold uppercase tracking-wider text-slate-500">Piliin ang inyong barangay</div>
-        {[["Province", "Albay"], ["City / Municipality", "Legazpi City (demo)"], ["Barangay", "Barangay Pag-asa"]].map(([l, v], i) => (
+        {[["Province", "Albay"], ["City / Municipality", "Legazpi City (demo)"], ["Barangay", "Barangay Gapo"]].map(([l, v], i) => (
           <div key={l} className={cx("mb-2 flex items-center gap-3 rounded-xl border px-3 py-2.5", i === 2 ? "border-gov bg-gov-50" : "border-slate-200")}>
             <MapPin size={16} className={i === 2 ? "text-flagred" : "text-slate-400"} />
             <div className="flex-1"><div className="text-[10px] font-semibold text-slate-500">{l}</div><div className="text-[14px] font-bold text-navy">{v}</div></div>
@@ -62,7 +62,7 @@ export function Dashboard() {
           <Sun size={150} className="absolute -right-16 -top-16" opacity={0.3} />
           <div className="text-[12px] font-semibold text-blue-200">Linggo, Nobyembre 8</div>
           <div className="text-[22px] font-black">Magandang araw, Juan! 👋</div>
-          <div className="text-[13px] text-blue-100">Welcome to Barangay Pag-asa.</div>
+          <div className="text-[13px] text-blue-100">Welcome to Barangay Gapo.</div>
           <div className="mt-3 flex gap-2 text-[11px] font-bold">
             <span className="rounded-full bg-white/15 px-2.5 py-1">1 request in review</span>
             <span className="rounded-full bg-sun px-2.5 py-1 text-navy">2 bagong anunsyo</span>
@@ -245,7 +245,7 @@ export function ReportRoad() {
           <svg viewBox="0 0 358 150" className="absolute inset-0 h-full w-full">
             <rect width="358" height="150" fill="#eaf0e6" />
             <path d="M0 95 H358" stroke="#fff" strokeWidth="16" /><path d="M150 0 V150" stroke="#fff" strokeWidth="12" /><path d="M260 0 L300 150" stroke="#fff" strokeWidth="10" />
-            <rect x="30" y="20" width="90" height="55" rx="6" fill="#cfdcf6" /><text x="75" y="52" fontSize="9" textAnchor="middle" fill="#0B2A6F" fontWeight="700">Pag-asa Elem. School</text>
+            <rect x="30" y="20" width="90" height="55" rx="6" fill="#cfdcf6" /><text x="75" y="52" fontSize="9" textAnchor="middle" fill="#0B2A6F" fontWeight="700">Gapo Elem. School</text>
             <rect x="175" y="18" width="70" height="50" rx="6" fill="#dfe7d6" /><rect x="180" y="110" width="60" height="32" rx="6" fill="#dfe7d6" />
             <text x="8" y="90" fontSize="8" fill="#64748b">Rizal St.</text>
           </svg>
@@ -380,9 +380,9 @@ export function AIChat() {
         <div className="flex gap-2">
           <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sun text-navy"><Bot size={15} /></span>
           <div className="max-w-[85%] rounded-2xl rounded-tl-md bg-white p-3 text-[12.5px] text-slate-800 shadow-sm ring-1 ring-slate-200">
-            Opo! Batay sa <b>demo data</b> ng Brgy. Pag-asa, may bukas na:
+            Opo! Batay sa <b>demo data</b> ng Brgy. Gapo, may bukas na:
             <div className="mt-2 rounded-xl border border-slate-200 p-2.5">
-              <div className="flex items-center gap-1.5 text-[12.5px] font-black text-navy"><GraduationCap size={15} className="text-gov" />Pag-asa Iskolar ng Barangay</div>
+              <div className="flex items-center gap-1.5 text-[12.5px] font-black text-navy"><GraduationCap size={15} className="text-gov" />Gapo Iskolar ng Barangay</div>
               <div className="mt-1 text-[11px] text-slate-600">₱5,000/semester (sample) · College</div>
               <div className="mt-1 inline-block rounded bg-red-50 px-1.5 py-0.5 text-[10.5px] font-bold text-flagred">Deadline: Nob 30, 2026</div>
             </div>
@@ -463,7 +463,7 @@ export function Emergency() {
           ))}
         </div>
         <div className="mt-3 mb-2 text-[14px] font-extrabold text-navy">Evacuation Centers</div>
-        {[["Pag-asa Elementary School", "400 capacity", "Standby"], ["Barangay Covered Court", "250 capacity", "Standby"]].map(([n, c, s]) => (
+        {[["Gapo Elementary School", "400 capacity", "Standby"], ["Barangay Covered Court", "250 capacity", "Standby"]].map(([n, c, s]) => (
           <Card key={n} className="mb-1.5 flex items-center gap-3 p-3"><MapPin size={18} className="text-flagred" /><div className="flex-1"><div className="text-[12.5px] font-bold text-navy">{n}</div><div className="text-[10.5px] text-slate-500">{c}</div></div><Pill tone="yellow">{s}</Pill></Card>
         ))}
         <div className="mt-2 rounded-2xl bg-gov-50 p-3"><div className="text-[12.5px] font-black text-navy">Go-Bag Checklist</div><div className="mt-1 text-[11px] text-slate-600">Tubig · Pagkain · Flashlight · Gamot · Kopya ng ID · Powerbank · Whistle</div></div>

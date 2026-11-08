@@ -29,7 +29,7 @@ function Admin() {
           </aside>
           <main className="flex-1 overflow-hidden bg-[#F6F8FC] p-6">
             <div className="flex items-center justify-between">
-              <div><div className="text-[24px] font-black text-navy">Magandang umaga, Sec. Talaan</div><div className="text-[13px] text-slate-500">Barangay Pag-asa · Linggo, Nob 8, 2026 <DemoTag /></div></div>
+              <div><div className="text-[24px] font-black text-navy">Magandang umaga, Sec. Talaan</div><div className="text-[13px] text-slate-500">Barangay Gapo · Linggo, Nob 8, 2026 <DemoTag /></div></div>
               <div className="flex items-center gap-2"><div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-[13px] text-slate-400 ring-1 ring-slate-200"><Search size={15} />Search tracking no.</div><span className="rounded-xl bg-flagred px-4 py-2 text-[13px] font-bold text-white">+ Publish Announcement</span></div>
             </div>
             <div className="mt-5 grid grid-cols-6 gap-3">

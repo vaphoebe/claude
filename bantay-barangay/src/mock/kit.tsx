@@ -75,7 +75,7 @@ export function TopBar({ title, back }: { title?: string; back?: boolean }) {
       {back ? <span className="grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-lg text-navy">‹</span> : <Mark size={30} />}
       <div className="min-w-0 flex-1">
         <div className="truncate text-[15px] font-extrabold text-navy">{title ?? "BANTAY BARANGAY"}</div>
-        {!title && <div className="text-[10px] font-semibold text-slate-500">Brgy. Pag-asa, Albay · Demo</div>}
+        {!title && <div className="text-[10px] font-semibold text-slate-500">Brgy. Gapo, Albay · Demo</div>}
       </div>
       <span className="rounded-full bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-600"><span className="rounded-full bg-white px-1.5 py-0.5 text-navy shadow-sm">FIL</span> EN</span>
     </div>

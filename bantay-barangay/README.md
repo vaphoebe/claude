@@ -5,7 +5,7 @@
 Concept mockup images for *Bantay Barangay*, a proposed digital barangay services platform.
 Palette follows the Philippine flag: blue `#0038A8`, red `#CE1126`, yellow `#FCD116`, white.
 
-> **DEMO CONCEPT — Not an official government service.** Barangay Pag-asa, its officials,
+> **DEMO CONCEPT — Not an official government service.** Barangay Gapo, its officials,
 > budgets, fees, phone numbers and residents are fictional.
 
 ## Images (`mockups/`)
