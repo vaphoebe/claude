@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Philippine flag palette: blue, red, yellow (sun & stars), white */
+  --color-navy: #0B2A6F;      /* deep flag blue for headings & admin */
+  --color-navy-700: #123a8c;
+  --color-navy-900: #061a4a;
+  --color-gov: #0038A8;       /* flag blue — primary */
+  --color-gov-50: #eaf0fb;
+  --color-gov-100: #d3e0f7;
+  --color-flagred: #CE1126;   /* flag red — accent & emergency */
+  --color-sun: #FCD116;       /* flag yellow — highlights */
+  --color-sun-dark: #8a6d00;  /* readable text on yellow */
+  --color-bg: #F8FAFC;
+  --color-ok: #16A34A;
+  --color-warn: #F59E0B;
+  --color-danger: #CE1126;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--color-bg); color: #0f172a; font-family: var(--font-sans); }
+html.large-text { font-size: 18px; }
+
+/* Visible focus for keyboard users */
+:focus-visible { outline: 3px solid #2563EB; outline-offset: 2px; border-radius: 8px; }
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { scrollbar-width: none; }
+
+.demo-watermark {
+  background-image: repeating-linear-gradient(-30deg, transparent 0 60px, rgba(220,38,38,0.06) 60px 61px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Tricolor accent stripe (blue · yellow · red) */
+.flag-stripe { background: linear-gradient(90deg, #0038A8 0 45%, #FCD116 45% 55%, #CE1126 55% 100%); }
