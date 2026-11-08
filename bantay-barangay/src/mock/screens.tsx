@@ -483,7 +483,7 @@ export function Seniors() {
           <Sun size={150} className="absolute -right-14 -top-14" opacity={0.25} />
           <div className="flex items-center gap-1.5 text-[11px] font-bold text-sun"><Accessibility size={14} />PARA SA ATING MGA LOLO AT LOLA</div>
           <div className="mt-1 text-[19px] font-black leading-tight">Serbisyo para sa Senior Citizens</div>
-          <div className="mt-1 text-[11.5px] text-blue-100">Barangay Gapo · 612 registered seniors <span className="font-bold text-sun">(sample)</span></div>
+          <div className="mt-1 text-[11.5px] text-blue-100">Barangay Pag-asa · 612 registered seniors <span className="font-bold text-sun">(sample)</span></div>
         </div>
         <div className="mt-2.5 flex items-center gap-2 rounded-2xl bg-sun/25 p-2.5">
           <Type size={18} className="text-navy" />
