@@ -125,6 +125,9 @@ function App() {
       <Overview />
       <Admin />
       {posters.map(([id, t, s, C, dark], i) => <Poster key={id} id={id} n={i + 1} title={t} sub={s} dark={dark}><C /></Poster>)}
+      {posters.map(([id, , , C, dark]) => (
+        <section key={"p" + id} id={"plain-" + id} className="grid place-items-center bg-[#eef3fd] p-10"><Phone dark={dark}><C /></Phone></section>
+      ))}
     </div>
   );
 }

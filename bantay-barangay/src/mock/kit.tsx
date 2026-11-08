@@ -85,7 +85,7 @@ export function TopBar({ title, back }: { title?: string; back?: boolean }) {
 export function BottomNav({ active = 0 }: { active?: number }) {
   const items = [[Home, "Home"], [FileText, "Dokumento"], [Megaphone, "Report"], [PieChart, "Budget"], [LayoutGrid, "Iba pa"]] as const;
   return (
-    <div className="absolute inset-x-0 bottom-0 border-t border-slate-200 bg-white/95 pb-5">
+    <div className="absolute inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-white pb-5">
       <div className="grid grid-cols-5">
         {items.map(([I, l], i) => (
           <div key={l} className={cx("relative flex flex-col items-center gap-0.5 pt-2.5 text-[10.5px] font-semibold", i === active ? "text-gov" : "text-slate-400")}>

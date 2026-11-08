@@ -12,14 +12,14 @@ const server = createServer(async (req, res) => {
   catch { res.writeHead(404); res.end(); }
 }).listen(4173);
 
-await mkdir("mockups", { recursive: true });
+await mkdir("mockups/screens", { recursive: true });
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 2100, height: 1400 }, deviceScaleFactor: Number(process.env.SCALE || 1) });
 await page.goto("http://localhost:4173/", { waitUntil: "networkidle" });
 await page.evaluate(() => document.fonts.ready);
 const ids = await page.$$eval("section[id]", (s) => s.map((x) => x.id));
 for (const id of ids) {
-  await page.locator(`[id="${id}"]`).screenshot({ path: `mockups/${id}.png` });
+  await page.locator(`[id="${id}"]`).screenshot({ path: id.startsWith("plain-") ? `mockups/screens/${id.slice(6)}.png` : `mockups/${id}.png` });
   console.log("saved mockups/" + id + ".png");
 }
 await browser.close(); server.close();
