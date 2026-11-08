@@ -116,7 +116,8 @@ const posters: [string, string, string, React.FC, boolean?][] = [
   ["09-health", "Libreng gamot at konsulta", "Tingnan ang schedule at availability bago pumunta.", S.Health],
   ["10-emergency", "Tulong, isang tap lang", "Hotlines, response team at evacuation centers.", S.Emergency],
   ["11-bantay-ai", "May tanong? Itanong kay Bantay AI", "Sagot sa Filipino o English — batay sa verified na impormasyon.", S.AIChat],
-  ["12-finale", "Paano kung ganito na kadali?", "Isang pangarap na digital barangay para sa bawat Pilipino.", S.Finale, true],
+  ["12-senior-citizens", "Alaga sa ating mga Lolo at Lola", "Pension schedule, Senior ID, discounts at libreng check-up — mas malaking letra pa.", S.Seniors],
+  ["13-finale", "Paano kung ganito na kadali?", "Isang pangarap na digital barangay para sa bawat Pilipino.", S.Finale, true],
 ];
 
 function App() {

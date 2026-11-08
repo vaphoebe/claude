@@ -14,10 +14,10 @@ Palette follows the Philippine flag: blue `#0038A8`, red `#CE1126`, yellow `#FCD
 |---|---|---|
 | `overview.png` | 3840×2160 | Cover / banner collage (5 screens) |
 | `admin.png` | 3200×2160 | Barangay admin console (desktop) |
-| `01-welcome.png` … `12-finale.png` | 2160×2700 (4:5) | Facebook carousel posts |
+| `01-welcome.png` … `13-finale.png` | 2160×2700 (4:5) | Facebook carousel posts |
 
 Posts: 01 Welcome · 02 Dashboard · 03 Clearance form · 04 Tracking number · 05 Report road damage ·
-06 Power outage tracking · 07 Budget · 08 Officials · 09 Health · 10 Emergency · 11 Bantay AI · 12 Finale
+06 Power outage tracking · 07 Budget · 08 Officials · 09 Health · 10 Emergency · 11 Bantay AI · 12 Senior Citizens · 13 Finale
 
 ## Re-render
 

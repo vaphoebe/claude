@@ -2,7 +2,7 @@ import React from "react";
 import {
   FileText, Megaphone, PieChart, Users, HeartPulse, GraduationCap, Bell, CalendarDays, Receipt, Siren, ListChecks, ShieldCheck,
   MapPin, Zap, Construction, ChevronRight, Check, Clock, Upload, Camera, Send, Bot, Sparkles, Mic, ThumbsUp, Paperclip,
-  Phone as PhoneIcon, Mail, Award, ArrowRight, Info, Download, Eye, Stethoscope, Droplets, Lightbulb, TriangleAlert, Search,
+  Phone as PhoneIcon, Mail, Award, ArrowRight, Info, Download, Eye, Stethoscope, Droplets, Lightbulb, TriangleAlert, Search, Wallet, IdCard, Gift, Percent, Accessibility, Type,
 } from "lucide-react";
 import { AIFab, BottomNav, Card, DemoStrip, DemoTag, Mark, Pill, StatusBar, Sun, Star, TopBar, cx, FlagStripe } from "./kit";
 
@@ -469,6 +469,58 @@ export function Emergency() {
         <div className="mt-2 rounded-2xl bg-gov-50 p-3"><div className="text-[12.5px] font-black text-navy">Go-Bag Checklist</div><div className="mt-1 text-[11px] text-slate-600">Tubig · Pagkain · Flashlight · Gamot · Kopya ng ID · Powerbank · Whistle</div></div>
       </Body>
       <BottomNav active={4} />
+    </div>
+  );
+}
+
+/* 12 ─ Senior Citizens */
+export function Seniors() {
+  return (
+    <div className="relative h-full">
+      <StatusBar /><DemoStrip /><TopBar back title="Senior Citizens" />
+      <Body className="pt-3">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gov to-navy p-4 text-white">
+          <Sun size={150} className="absolute -right-14 -top-14" opacity={0.25} />
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-sun"><Accessibility size={14} />PARA SA ATING MGA LOLO AT LOLA</div>
+          <div className="mt-1 text-[19px] font-black leading-tight">Serbisyo para sa Senior Citizens</div>
+          <div className="mt-1 text-[11.5px] text-blue-100">Barangay Gapo · 612 registered seniors <span className="font-bold text-sun">(sample)</span></div>
+        </div>
+        <div className="mt-2.5 flex items-center gap-2 rounded-2xl bg-sun/25 p-2.5">
+          <Type size={18} className="text-navy" />
+          <div className="flex-1 text-[12px] font-bold text-navy">Mas malaking letra</div>
+          <span className="relative h-6 w-11 rounded-full bg-gov"><span className="absolute right-0.5 top-0.5 h-5 w-5 rounded-full bg-white" /></span>
+        </div>
+        <Card className="mt-2.5 overflow-hidden">
+          <div className="flex items-center gap-2 bg-gov-50 px-3 py-2"><Wallet size={16} className="text-gov" /><span className="text-[12.5px] font-black text-navy">Social Pension Payout</span><span className="ml-auto"><DemoTag /></span></div>
+          <div className="p-3">
+            <div className="flex items-end justify-between">
+              <div><div className="text-[10.5px] text-slate-500">Susunod na payout (sample)</div><div className="text-[17px] font-black text-navy">Nob 20, 2026 · 8:00 AM</div><div className="text-[11px] text-slate-600">Barangay Covered Court · Purok 1–4</div></div>
+              <Pill tone="green">Scheduled</Pill>
+            </div>
+            <div className="mt-2 rounded-lg bg-slate-50 p-2 text-[10.5px] text-slate-600">Dalhin: Senior Citizen ID · valid ID · authorization letter kung may kinatawan</div>
+          </div>
+        </Card>
+        <div className="mt-2.5 grid grid-cols-2 gap-2">
+          {([
+            [IdCard, "OSCA / Senior ID", "Paano mag-apply", "#0038A8"],
+            [Percent, "20% Discount + VAT Exempt", "Gamot, pagkain, transportasyon", "#CE1126"],
+            [Stethoscope, "Libreng Check-up", "Tuwing Huwebes · BP & sugar", "#0B2A6F"],
+            [Gift, "Birthday Cash Gift", "Para sa 80+ (sample)", "#b38f00"],
+          ] as const).map(([I, t, d, c]) => (
+            <Card key={t} className="flex items-center gap-2 p-2.5">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl" style={{ background: c + "16", color: c }}><I size={18} /></span>
+              <div><div className="text-[11.5px] font-black leading-tight text-navy">{t}</div><div className="text-[9.5px] leading-tight text-slate-500">{d}</div></div>
+            </Card>
+          ))}
+        </div>
+        <Card className="mt-2.5 flex items-center gap-3 p-3">
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-red-50 text-flagred"><CalendarDays size={20} /></span>
+          <div className="flex-1"><div className="text-[12.5px] font-black text-navy">Senior Citizens' Wellness Day</div><div className="text-[10.5px] text-slate-500">Nob 20 · 9:00 AM · Zumba, BP screening</div></div>
+          <span className="rounded-lg bg-gov px-2.5 py-1.5 text-[11px] font-bold text-white">RSVP</span>
+        </Card>
+        <div className="mt-2.5 flex items-center justify-center gap-2 rounded-2xl bg-flagred py-3 text-[14px] font-extrabold text-white shadow-lg shadow-red-700/25"><PhoneIcon size={17} />Humingi ng Tulong / Home Visit</div>
+        <div className="mt-1.5 text-center text-[9.5px] text-slate-500">Halimbawang impormasyon lamang. Kumpirmahin sa OSCA ng inyong lungsod/munisipyo.</div>
+      </Body>
     </div>
   );
 }
